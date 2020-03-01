@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien\&lt; Memory &gt;">
+      <UniqueIdentifier>{736968b0-b867-49c8-9d2d-ca41d563d736}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\&lt; Utils &gt;">
+      <UniqueIdentifier>{959252dc-0a0d-4f88-b8bf-31ae14b8b2f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\&lt; Cheat &gt;">
+      <UniqueIdentifier>{60ff7a12-0742-4fe3-82eb-2dd1aa03545d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\&lt; Engine &gt;">
+      <UniqueIdentifier>{fa0af932-bb69-4a31-98a1-3906bfe8699f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="main.asm">
+      <Filter>Headerdateien</Filter>
+    </MASM>
+    <MASM Include="Memory.asm">
+      <Filter>Headerdateien\&lt; Memory &gt;</Filter>
+    </MASM>
+    <MASM Include="Utils.asm">
+      <Filter>Headerdateien\&lt; Utils &gt;</Filter>
+    </MASM>
+    <MASM Include="Cheat.asm">
+      <Filter>Headerdateien\&lt; Cheat &gt;</Filter>
+    </MASM>
+    <MASM Include="Engine.asm">
+      <Filter>Headerdateien\&lt; Engine &gt;</Filter>
+    </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Memory.inc">
+      <Filter>Headerdateien\&lt; Memory &gt;</Filter>
+    </None>
+    <None Include="Utils.inc">
+      <Filter>Headerdateien\&lt; Utils &gt;</Filter>
+    </None>
+    <None Include="Cheat.inc">
+      <Filter>Headerdateien\&lt; Cheat &gt;</Filter>
+    </None>
+    <None Include="Engine.inc">
+      <Filter>Headerdateien\&lt; Engine &gt;</Filter>
+    </None>
+    <None Include="Offsets.inc">
+      <Filter>Headerdateien</Filter>
+    </None>
+  </ItemGroup>
+</Project>

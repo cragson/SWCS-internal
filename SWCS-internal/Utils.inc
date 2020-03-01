@@ -1,0 +1,1 @@
+UTIL_MsgBox proto dwCaption : DWORD, dwText : DWORD

@@ -1,0 +1,8 @@
+bin/
+Release/
+Debug/
+.vs/
+
+*.dll
+*.obj
+*.db
