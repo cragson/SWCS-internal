@@ -157,13 +157,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <MASM Include="Cheat.asm" />
+    <MASM Include="Console.asm" />
     <MASM Include="Engine.asm" />
     <MASM Include="main.asm" />
     <MASM Include="Memory.asm" />
+    <MASM Include="Offsets.asm" />
     <MASM Include="Utils.asm" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cheat.inc" />
+    <None Include="Console.inc" />
     <None Include="Engine.inc" />
     <None Include="Memory.inc" />
     <None Include="Offsets.inc" />

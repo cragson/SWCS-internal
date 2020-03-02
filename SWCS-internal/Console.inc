@@ -1,0 +1,2 @@
+
+SetupConsole proto szTitle : dword

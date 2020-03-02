@@ -21,6 +21,12 @@
     <Filter Include="Headerdateien\&lt; Engine &gt;">
       <UniqueIdentifier>{fa0af932-bb69-4a31-98a1-3906bfe8699f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\&lt; Offsets &gt;">
+      <UniqueIdentifier>{69abedc6-120f-4cae-b182-49b713bcd432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\&lt; Console &gt;">
+      <UniqueIdentifier>{5803033f-d6f6-4e3f-94f7-d485a22b54d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <MASM Include="main.asm">
@@ -38,6 +44,12 @@
     <MASM Include="Engine.asm">
       <Filter>Headerdateien\&lt; Engine &gt;</Filter>
     </MASM>
+    <MASM Include="Console.asm">
+      <Filter>Headerdateien\&lt; Console &gt;</Filter>
+    </MASM>
+    <MASM Include="Offsets.asm">
+      <Filter>Headerdateien\&lt; Offsets &gt;</Filter>
+    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="Memory.inc">
@@ -53,7 +65,10 @@
       <Filter>Headerdateien\&lt; Engine &gt;</Filter>
     </None>
     <None Include="Offsets.inc">
-      <Filter>Headerdateien</Filter>
+      <Filter>Headerdateien\&lt; Offsets &gt;</Filter>
+    </None>
+    <None Include="Console.inc">
+      <Filter>Headerdateien\&lt; Console &gt;</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -29,6 +29,13 @@ EntryPoint proc hModule : HMODULE, ul_reason_for_call : dword , lpReserved : LPV
 
 	call SetupCheat
 
+calb:
+
+	push 1000
+	call Sleep
+
+	jmp calb
+
 finish:
 	pop eax
 	mov eax, hModule

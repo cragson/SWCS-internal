@@ -13,7 +13,16 @@ extern dwImageBase : dword
 
 .code
 
-IsGameLoaded proto
+GetAbsoluteAddress proc rel_offset : dword
+
+	mov eax, dword ptr [ dwImageBase ]
+	add eax, rel_offset
+
+	ret 4
+
+GetAbsoluteAddress endp
+
+IsGameLoaded proc
 
 	push ebx
 	xor ebx, ebx
@@ -23,7 +32,7 @@ IsGameLoaded proto
 
 	xor eax, eax
 
-	mov eax, byte ptr [ ebx ]
+	movzx eax, byte ptr [ ebx ]
 
 	pop ebx
 
@@ -36,7 +45,7 @@ GetBrickScore proc
 	xor eax, eax
 
 	mov eax, dword ptr [ dwImageBase ]
-	add eax, dword ptr [ off_IsGameLoaded ]
+	add eax, dword ptr [ off_BrickScore ]
 
 	mov eax, dword ptr [ eax ]
 
@@ -54,7 +63,7 @@ IsIngameMenuOpen proc
 
 	xor eax, eax
 
-	mov eax, byte ptr [ ebx ]
+	movzx eax, byte ptr [ ebx ]
 
 	pop ebx
 
@@ -74,5 +83,35 @@ GetGameTimeInSeconds proc
 	ret
 
 GetGameTimeInSeconds endp
+
+SetBrickScore proc brick_amount : dword
+
+	push eax
+
+	mov eax, dword ptr [ dwImageBase ]
+	add eax, dword ptr [ off_BrickScore ]
+
+	cmp eax, 0
+
+	je fail
+
+	push ebx
+	xor ebx, ebx
+	mov ebx, brick_amount
+
+	mov dword ptr [ eax ], ebx
+
+	pop ebx
+
+	pop eax
+
+	ret 4
+
+fail:
+	pop eax
+
+	ret 4
+
+SetBrickScore endp
 
 end
