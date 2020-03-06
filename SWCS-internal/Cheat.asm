@@ -14,6 +14,7 @@ extern off_BrickScore		  : dword
 extern off_IsGameLoaded		  : dword
 extern off_GameTimeInSeconds  : dword
 extern off_IsIngameMenuOpen   : dword
+extern off_LevelScore		  : dword
 
 .data?
 
@@ -42,33 +43,62 @@ Get_Image_Base:
 
 	push offset szWelcomeCaption
 	call SetupConsole
+	
+	printf("\n[+] Offsets (relative) [+]\n")
 
 	mov eax, dword ptr ds:[ dwImageBase ]
-
-	printf("%s%s\n", "[+] LEGOStarWarsSaga.exe Imagebase: 0x", uhex$( eax ) )
-	printf("[+] Current offsets [+]\n")
+	printf("\n\t%s%s\n", "Imagebase: 0x", uhex$( eax ) )
 	
 	mov eax, off_BrickScore
 	push eax
 	call GetAbsoluteAddress
-	printf("%s%s\n", "BrickScore: 0x", uhex$( eax ) )
+	printf("\t%s%s\n", "BrickScore: 0x", uhex$( eax ) )
 
 	mov eax, off_GameTimeInSeconds
 	push eax
 	call GetAbsoluteAddress
-	printf("%s%s\n", "GameTimeInSeconds: 0x", uhex$( eax ) )
+	printf("\t%s%s\n", "GameTimeInSeconds: 0x", uhex$( eax ) )
 
 	mov eax, off_IsGameLoaded
 	push eax
 	call GetAbsoluteAddress
-	printf("%s%s\n", "IsGameLoaded: 0x", uhex$( eax ) )
+	printf("\t%s%s\n", "IsGameLoaded: 0x", uhex$( eax ) )
 
 	mov eax, off_IsIngameMenuOpen
 	push eax
 	call GetAbsoluteAddress
-	printf("%s%s\n", "IsIngameMenuOpen: 0x", uhex$( eax ) )
+	printf("\t%s%s\n", "IsIngameMenuOpen: 0x", uhex$( eax ) )
+
+	mov eax, off_LevelScore
+	push eax
+	call GetAbsoluteAddress
+	printf("\t%s%s\n", "LevelScore: 0x", uhex$( eax ) )
 
 	popad
+
+sleep_again:
+
+	push 450
+	call Sleep
+	
+	push VK_NUMPAD0
+	call UTIL_IsKeyPressed
+
+	cmp eax, 1
+
+	je AddSomeBricks
+
+	jmp sleep_again
+
+AddSomeBricks:
+
+	push 1000h
+	call AddBrickScore
+
+	push 1000h
+	call AddLevelScore
+
+	jmp sleep_again
 
 	ret
 

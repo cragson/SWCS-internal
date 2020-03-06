@@ -6,40 +6,44 @@ include Utils.inc
 
 .data
 
-szTest1 db 'Created Thread!', 0
-
 .code
 
-EntryPoint proc hModule : HMODULE, ul_reason_for_call : dword , lpReserved : LPVOID
+EntryPoint proc hInstDll : dword, ul_reason_for_call : dword , lpReserved : dword
 
-	push eax
-	mov eax, dword ptr ss:[ ul_reason_for_call ]
-
-	cmp eax, DLL_PROCESS_DETACH
-
-	je finish
-
-	mov eax, dword ptr ss:[ ul_reason_for_call ]
+	mov eax, ul_reason_for_call
 
 	cmp eax, DLL_PROCESS_ATTACH
 
-	jne finish
+	je process_attach
 
-	pop eax
+	mov eax, ul_reason_for_call
 
-	call SetupCheat
+	cmp eax, DLL_PROCESS_DETACH
 
-calb:
+	je process_detach
 
-	push 1000
-	call Sleep
+	mov eax, 0
 
-	jmp calb
+	ret 12
 
-finish:
-	pop eax
-	mov eax, hModule
-	invoke FreeLibraryAndExitThread, eax, 1
+process_attach:
+	
+	push 0
+	push 0
+	push 0
+	push SetupCheat
+	push 0
+	push 0
+	call CreateThread
+
+	mov eax, 1
+	ret 12
+
+process_detach:
+
+	push 1
+	push hInstDll
+	call FreeLibraryAndExitThread
 
 EntryPoint endp
 

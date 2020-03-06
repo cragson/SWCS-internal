@@ -8,6 +8,7 @@ extern off_IsGameLoaded		 : dword
 extern off_BrickScore		 : dword
 extern off_IsIngameMenuOpen  : dword
 extern off_GameTimeInSeconds : dword
+extern off_LevelScore		 : dword
 
 extern dwImageBase : dword
 
@@ -21,6 +22,19 @@ GetAbsoluteAddress proc rel_offset : dword
 	ret 4
 
 GetAbsoluteAddress endp
+
+GetBrickScore proc
+	
+	xor eax, eax
+
+	mov eax, dword ptr [ dwImageBase ]
+	add eax, dword ptr [ off_BrickScore ]
+
+	mov eax, dword ptr [ eax ]
+
+	ret
+
+GetBrickScore endp
 
 IsGameLoaded proc
 
@@ -39,19 +53,6 @@ IsGameLoaded proc
 	ret
 
 IsGameLoaded endp
-
-GetBrickScore proc
-	
-	xor eax, eax
-
-	mov eax, dword ptr [ dwImageBase ]
-	add eax, dword ptr [ off_BrickScore ]
-
-	mov eax, dword ptr [ eax ]
-
-	ret
-
-GetBrickScore endp
 
 IsIngameMenuOpen proc
 
@@ -113,5 +114,39 @@ fail:
 	ret 4
 
 SetBrickScore endp
+
+AddBrickScore proc additional_bricks : dword
+	push eax
+
+	mov eax, dword ptr [ dwImageBase ]
+	add eax, dword ptr [ off_BrickScore ]
+
+	push ebx
+	mov ebx, dword ptr [ eax ]
+	add ebx, additional_bricks
+	mov dword ptr [ eax ], ebx
+
+	pop eax
+
+	ret 4
+
+AddBrickScore endp
+
+AddLevelScore proc additional_bricks : dword
+	push eax
+
+	mov eax, dword ptr [ dwImageBase ]
+	add eax, dword ptr [ off_LevelScore ]
+
+	push ebx
+	mov ebx, dword ptr [ eax ]
+	add ebx, additional_bricks
+	mov dword ptr [ eax ], ebx
+
+	pop eax
+
+	ret 4
+
+AddLevelScore endp
 
 end

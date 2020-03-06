@@ -6,7 +6,7 @@ GetAbsoluteAddress proto rel_offset : dword
 ; Main functions
 ; return value passend in eax
 
-; bools
+; BOOL
 IsGameLoaded proto
 IsIngameMenuOpen proto
 
@@ -18,3 +18,5 @@ GetGameTimeInSeconds proto
 
 ; void
 SetBrickScore proto brick_amount : dword
+AddBrickScore proto additional_bricks : dword
+AddLevelScore proto additional_bricks : dword
