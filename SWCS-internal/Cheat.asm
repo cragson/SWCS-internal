@@ -81,6 +81,16 @@ sleep_again:
 	push 450
 	call Sleep
 	
+	pushad
+
+	call GetSessionTable
+	printf("\t%s%s\n", "Current Session Table: 0x", uhex$( eax ) )
+
+	call IsPlayerAlive
+	printf("\t%s%d\n", "IsPlayerAlive(): ", eax )
+
+	popad
+
 	push VK_NUMPAD0
 	call UTIL_IsKeyPressed
 

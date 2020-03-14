@@ -9,9 +9,11 @@ GetAbsoluteAddress proto rel_offset : dword
 ; BOOL
 IsGameLoaded proto
 IsIngameMenuOpen proto
+IsPlayerAlive proto
 
 ; int32_t
 GetBrickScore proto
+GetSessionTable proto
 
 ; float as dword
 GetGameTimeInSeconds proto

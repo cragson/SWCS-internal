@@ -9,6 +9,7 @@ extern off_BrickScore		 : dword
 extern off_IsIngameMenuOpen  : dword
 extern off_GameTimeInSeconds : dword
 extern off_LevelScore		 : dword
+extern off_SessionTable      : dword
 
 extern dwImageBase : dword
 
@@ -35,6 +36,19 @@ GetBrickScore proc
 	ret
 
 GetBrickScore endp
+
+GetSessionTable proc
+
+	xor eax, eax
+
+	mov eax, dword ptr [ dwImageBase ]
+	add eax, dword ptr [ off_SessionTable ]
+
+	mov eax, dword ptr [ eax ]
+
+	ret
+
+GetSessionTable endp
 
 IsGameLoaded proc
 
@@ -71,6 +85,25 @@ IsIngameMenuOpen proc
 	ret
 
 IsIngameMenuOpen endp
+
+IsPlayerAlive proc
+
+	call GetSessionTable
+
+	cmp eax, 0
+
+	je invalid_session_table
+
+	movzx eax, byte ptr [ eax + 028Ch ]
+
+	ret
+
+invalid_session_table:
+	
+	mov al, -1
+	ret
+
+IsPlayerAlive endp
 
 GetGameTimeInSeconds proc
 
