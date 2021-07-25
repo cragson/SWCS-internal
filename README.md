@@ -1,2 +1,2 @@
 # SWCS-internal
-A internal cheat for LEGO: Star Wars Complete Saga, written in masm x86.
+An internal cheat for Lego Star Wars: The Complete Saga, written in masm x86.
